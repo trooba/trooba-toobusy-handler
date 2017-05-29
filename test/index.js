@@ -17,6 +17,7 @@ describe(__filename, () => {
         .create()
         .request('hi', (err, res) => {
             Assert.ok(!err, err && err.stack);
+            Assert.equal('ok', res);
             next();
         });
     });
