@@ -1,0 +1,41 @@
+{
+  "name": "trooba-toobusy-handler",
+  "version": "0.1.0",
+  "description": "Trooba based handler that provides more consistent too busy functionality based on hystrixjs and toobusy-js functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "test-coverage": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --  --timeout 4s -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trooba/trooba-toobusy-handler.git"
+  },
+  "keywords": [
+    "toobusy",
+    "too-busy",
+    "trooba",
+    "hystrix",
+    "handler",
+    "pipeline",
+    "backpressure"
+  ],
+  "author": "Dmytro Semenov <dimichsdg@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trooba/trooba-toobusy-handler/issues"
+  },
+  "homepage": "https://github.com/trooba/trooba-toobusy-handler#readme",
+  "dependencies": {
+    "hystrix-too-busy": "^0.1.0"
+  },
+  "devDependencies": {
+    "async": "^2.4.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "trooba": "^2.0.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
