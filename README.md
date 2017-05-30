@@ -42,4 +42,3 @@ require('trooba')
     console.log(err, response && response.body)
 });
 ```
-# express-hystrix-toobusy
