@@ -1,5 +1,4 @@
 # trooba-toobusy-handler
-========================
 
 The module provides trooba too-busy handler. The handler is based on [hystrix-too-busy module](https://github.com/trooba/hystrix-too-busy)
 
