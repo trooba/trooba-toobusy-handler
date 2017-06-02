@@ -1,6 +1,6 @@
 {
   "name": "trooba-toobusy-handler",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Trooba based handler that provides more consistent too busy functionality based on hystrixjs and toobusy-js functionality",
   "main": "index.js",
   "scripts": {
