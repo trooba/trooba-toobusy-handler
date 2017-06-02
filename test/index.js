@@ -24,7 +24,9 @@ describe(__filename, () => {
 
     it('should throw busy error', next => {
         handler.configure({
-            circuitBreakerRequestVolumeThreshold: 1
+            default: {
+                circuitBreakerRequestVolumeThreshold: 1
+            }
         });
 
         Toobusy.deps.toobusy = () => true;
@@ -54,7 +56,50 @@ describe(__filename, () => {
                 });
             }
         ], next);
+    });
 
+    it('should pick up command specific config and throw busy error', next => {
+        handler.configure({
+            default: {
+                circuitBreakerRequestVolumeThreshold: 10
+            },
+            commands: {
+                hi: {
+                    circuitBreakerRequestVolumeThreshold: 1
+                }
+            }
+        });
 
+        Toobusy.deps.toobusy = () => true;
+
+        const pipe = Trooba
+        .use(pipe => pipe.on('request', (request, next) => {
+            pipe.context.command = request;
+            next();
+        }))
+        .use(handler)
+        .use(pipe => pipe.on('request', request => {
+            pipe.respond('ok');
+        }))
+        .build();
+
+        Async.series([
+            next => {
+                pipe.create()
+                .request('hi', (err, res) => {
+                    Assert.ok(!err, err && err.stack);
+                    next();
+                });
+            },
+
+            next => {
+                pipe.create()
+                .request('hi', (err, res) => {
+                    Assert.ok(err);
+                    Assert.equal('TooBusy', err.message);
+                    next();
+                });
+            }
+        ], next);
     });
 });

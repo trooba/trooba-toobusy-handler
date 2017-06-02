@@ -21,13 +21,24 @@ const toobusy = require('trooba-toobusy-handler');
 toobusy.configure({
     latencyThreshold: 70,
     interval: 500,
-    circuitBreakerErrorThresholdPercentage: 50,
-    circuitBreakerRequestVolumeThreshold: 20,
-    circuitBreakerSleepWindowInMilliseconds: 5000,
+    default: {
+        circuitBreakerErrorThresholdPercentage: 50,
+        circuitBreakerRequestVolumeThreshold: 20,
+        circuitBreakerSleepWindowInMilliseconds: 5000
+    }
 });
 
 require('trooba')
+// optional: command resolver used by toobusy
+.use(pipe => {
+    pipe.on('request', request => {
+        pipe.context.command =
+            request.path === '/' ? 'homeCommand' : 'otherCommand';
+    });
+})
+// add toobusy
 .use(toobusy)
+// add http transport
 .use('trooba-http-transport', {
     protocol: 'http:',
     hostname: 'www.google.com'

@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/trooba/trooba-toobusy-handler#readme",
   "dependencies": {
-    "hystrix-too-busy": "^0.1.0"
+    "hystrix-too-busy": "^0.2"
   },
   "devDependencies": {
     "async": "^2.4.1",
