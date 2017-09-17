@@ -1,5 +1,7 @@
 # trooba-toobusy-handler
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/trooba/trooba-toobusy-handler.svg)](https://greenkeeper.io/)
+
 The module provides trooba too-busy handler. The handler is based on [hystrix-too-busy module](https://github.com/trooba/hystrix-too-busy)
 
 [![codecov](https://codecov.io/gh/trooba/trooba-toobusy-handler/branch/master/graph/badge.svg)](https://codecov.io/gh/trooba/trooba-toobusy-handler)
